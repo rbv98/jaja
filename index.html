@@ -4,22 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy 13th Anniversary, Jaja! 💙💚</title>
-  
-  <!-- React -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  
-  <!-- Babel for JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
   <style>
-    @keyframes fade-in {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #dbeafe 0%, #d1fae5 50%, #cffafe 100%);
+      min-height: 100vh;
+    }
+
+    .nav {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #2563eb, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      background: transparent;
+      color: #374151;
+    }
+
+    .nav-button:hover {
+      background: #dbeafe;
+    }
+
+    .nav-button.active {
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      color: white;
+    }
+
+    .section {
+      display: none;
+      padding: 4rem 2rem;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
@@ -30,552 +90,645 @@
       }
     }
 
-    .animate-fade-in {
-      animation: fade-in 0.6s ease-out;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    .home-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .heart-icon {
+      font-size: 6rem;
+      margin-bottom: 2rem;
+      animation: pulse 2s infinite;
     }
 
-    ::-webkit-scrollbar {
-      width: 10px;
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
+    .main-title {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #2563eb, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
     }
 
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, #3b82f6, #10b981);
-      border-radius: 5px;
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: left;
     }
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(to bottom, #2563eb, #059669);
+    .card p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: #374151;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      background: linear-gradient(to right, #2563eb, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      align-items: center;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-text, .timeline-image {
+      flex: 1;
+    }
+
+    .timeline-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+
+    .timeline-card:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .timeline-year {
+      color: #2563eb;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-desc {
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .timeline-image-container {
+      background: linear-gradient(135deg, #dbeafe, #d1fae5);
+      border-radius: 1rem;
+      overflow: hidden;
+      height: 250px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .goals-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .goal-input-container {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .goal-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 2px solid #dbeafe;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .goal-input:focus {
+      border-color: #3b82f6;
+    }
+
+    .add-button {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .add-button:hover {
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .goal-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: linear-gradient(to right, #dbeafe, #d1fae5);
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+      transition: all 0.3s;
+    }
+
+    .goal-item:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .goal-checkbox {
+      font-size: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .goal-text {
+      flex: 1;
+      color: #1f2937;
+    }
+
+    .goal-text.completed {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+
+    .goal-delete {
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .goal-item:hover .goal-delete {
+      opacity: 1;
+    }
+
+    .goal-progress {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #dbeafe;
+      border-radius: 0.5rem;
+      text-align: center;
+      color: #1f2937;
+      border: 2px solid #93c5fd;
+    }
+
+    .puzzle-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .puzzle-intro {
+      text-align: center;
+      color: #4b5563;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .puzzle-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .puzzle-tile {
+      aspect-ratio: 1;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: linear-gradient(135deg, #3b82f6, #10b981);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .puzzle-tile:hover {
+      transform: scale(1.05);
+    }
+
+    .puzzle-tile.empty {
+      background: #e5e7eb;
+      cursor: default;
+    }
+
+    .puzzle-tile.empty:hover {
+      transform: none;
+    }
+
+    .puzzle-complete {
+      display: none;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .puzzle-complete.show {
+      display: block;
+    }
+
+    .puzzle-reward-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .puzzle-message {
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .puzzle-message h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .reset-button {
+      display: block;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .reset-button:hover {
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-buttons {
+        gap: 0.5rem;
+      }
+      
+      .nav-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .main-title {
+        font-size: 2rem;
+      }
+
+      .timeline-item {
+        flex-direction: column !important;
+      }
+
+      .timeline-image-container {
+        height: 200px;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="root"></div>
   
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="nav-title">❤️ Our Story</div>
+      <div class="nav-buttons">
+        <button class="nav-button active" onclick="showSection('home')">Home</button>
+        <button class="nav-button" onclick="showSection('timeline')">📅 Timeline</button>
+        <button class="nav-button" onclick="showSection('goals')">🎯 Goals</button>
+        <button class="nav-button" onclick="showSection('puzzle')">🧩 Puzzle</button>
+      </div>
+    </div>
+  </nav>
 
-    function AnniversaryWebsite() {
-      const [activeSection, setActiveSection] = useState('home');
-      const [goals, setGoals] = useState([
-        { id: 1, text: 'Have fewer fights and more laughter', completed: true },
-        { id: 2, text: 'Take that perfect Goa trip together', completed: true },
-        { id: 3, text: 'Clear NET exam', completed: false },
-        { id: 4, text: 'Find the perfect job', completed: false },
-        { id: 5, text: 'Convince our parents (together!)', completed: false },
-        { id: 6, text: 'Clear all loans and be debt-free', completed: false },
-        { id: 7, text: 'Have our smooth and simple shaadi', completed: false },
-        { id: 8, text: 'Go on an amazing foreign trip', completed: false },
-        { id: 9, text: 'Start our little family with babies', completed: false },
-        { id: 10, text: 'Adopt adorable pets', completed: false },
-      ]);
-      const [newGoal, setNewGoal] = useState('');
-      const [puzzleComplete, setPuzzleComplete] = useState(false);
-      const [tiles, setTiles] = useState([]);
-
-      const timelineEvents = [
-        {
-          year: '2010',
-          title: 'When Destiny Intervened',
-          description: 'Fate put us in the same 6th grade class, and I met this wonderful person who would change my life forever.',
-          image: './images/timeline/2010.jpg'
-        },
-        {
-          year: '2011',
-          title: 'The Debate Team Days',
-          description: 'Laila ma\'am started the debate group and you joined. While you had eyes for another team member, you somehow managed to catch mine too—stealing my attention away from Laila ma\'am, one glance at a time.',
-          image: './images/timeline/2011.jpg'
-        },
-        {
-          year: '2012',
-          title: 'Water Park & Kolaveri',
-          description: 'I sat behind you on the trip to the water park and couldn\'t stop sneaking looks. You vibing to "Why This Kolaveri" is forever etched in my memory. By year\'s end, I was falling for you—keeping our books together during submissions, any excuse to be close. That fracture was the best thing that happened; my last 7 minutes will have that picture of you chasing me. I let everyone else autograph my cast except you—you didn\'t need to, you\'d already signed into my heart.',
-          image: './images/timeline/2012.jpg'
-        },
-        {
-          year: '2013',
-          title: 'Early Mornings & Growing Feelings',
-          description: 'Tension was building between us, especially when you sat in front of me with Dhiren by my side. I felt terrible when rows were alternated each week. We both started coming early to class—for someone who hated mornings, you became my reason to wake up 30 minutes early to groom myself. My parents were spared the trouble of pushing me out of bed.',
-          image: './images/timeline/2013-early.jpg'
-        },
-        {
-          year: 'Feb 8, 2013',
-          title: 'The Day Everything Changed',
-          description: 'Last period. Rohan George spilled the secret in front of everyone. I was scared, shy, and couldn\'t face you—I thought you wouldn\'t like it and ran to my van. You and Nikitha came following, but guilt consumed me. Even as I tried covering my ears, I heard you say it... I was overwhelmed, speechless. By the time I processed that you liked me too and this wasn\'t some fairytale, you were gone and the van was leaving.',
-          image: './images/timeline/2013-feb8.jpg'
-        },
-        {
-          year: 'Nov 27, 2013',
-          title: 'Three Words',
-          description: 'I\'d assumed you knew how I felt. We spoke, looked at each other every 10 minutes, and got very busy "swimming" (hehe). When this genius finally realized I hadn\'t officially said those three words, I did. November 27th—the day I told you I love you.',
-          image: './images/timeline/2013-nov27.jpg'
-        },
-        {
-          year: 'April 9, 2014',
-          title: 'Bittersweet Goodbye',
-          description: '10th grade ended. You gave me a Dairy Milk as my birthday gift, and I had mixed feelings knowing I wouldn\'t see you for a while. No contact. I missed you so much. I still remember how it felt without hearing from you.',
-          image: './images/timeline/2014-april.jpg'
-        },
-        {
-          year: 'July 2014',
-          title: 'Long Distance Begins',
-          description: 'A tricky period—our long distance relationship officially started with you in another class. Thank God for WhatsApp keeping us connected. We shared beautiful memories like our first outing after SPARK. I remember that day like yesterday. Things got rough afterward, leaving scars, but somehow we held on.',
-          image: './images/timeline/2014-july.jpg'
-        },
-        {
-          year: 'April 2015',
-          title: 'KFC & Better Days',
-          description: 'Our issues were healing. Our KFC date was genuinely fun—simple, sweet, and perfect.',
-          image: './images/timeline/2015-april.jpg'
-        },
-        {
-          year: 'Oct 16, 2015',
-          title: 'First Cheek Kiss',
-          description: 'Our first cheek kiss! A milestone indeed. I can still feel it when I close my eyes. I had no complaints, but madam said I couldn\'t cheek kiss properly. Hope it\'s much better now! :P',
-          image: './images/timeline/2015-oct16.jpg'
-        },
-        {
-          year: '2016',
-          title: 'The Ooty Magic',
-          description: 'An amazing year. Scars were healing, and I was falling deeper for you. The Ooty trip is a highlight of my life. Sneaking away, taking pictures, sharing secret glances—it was lovely.',
-          image: './images/timeline/2016-ooty.jpg'
-        },
-        {
-          year: 'Jan 1, 2016',
-          title: 'Creamy Inn Birthday',
-          description: 'Planning for months, searching for the perfect gift, all that buildup was so fun. Hope you enjoyed it despite my lame party-planning skills! The rest of the year was a dream—I was so attached.',
-          image: './images/timeline/2016-jan.jpg'
-        },
-        {
-          year: 'July 7, 2016',
-          title: 'Cities Apart',
-          description: 'Long distance wasn\'t just between classes anymore—it extended to cities. I\'ll never forget the send-off at your house. The first time I felt your tight hug, it was the best feeling I\'d experienced until then.',
-          image: './images/timeline/2016-july.jpg'
-        },
-        {
-          year: 'Dec 16, 2016',
-          title: 'Our First Kiss',
-          description: 'We had our settling-in phase with plenty of fights, but when our lips first touched, most of it seemed to vanish. We still fought, but each one only brought us closer.',
-          image: './images/timeline/2016-dec.jpg'
-        },
-        {
-          year: '2017-2019',
-          title: 'The Golden Years',
-          description: 'This period was magical. Every visit meant endless dates—our first movie together "Rangasthalam," coffee shops, parks, beaches, and that fun date at Joe\'s house. Driving home for 2 hours to spend 1 hour with you was 200% worth it. You graduated and started your master\'s journey, and I\'m glad I was there through it all.',
-          image: './images/timeline/2017-2019.jpg'
-        },
-        {
-          year: '2020',
-          title: 'Growing Through Lockdown',
-          description: 'As the world stopped, our relationship kept growing. You were there when I was worried sick about my job offer being recalled, and there to celebrate when I got it.',
-          image: './images/timeline/2020.jpg'
-        },
-        {
-          year: 'Dec 21, 2020',
-          title: 'No Comments Needed',
-          description: 'The expression on your face that day said it all. Best day ever. ❤️',
-          image: './images/timeline/2020-dec21.jpg'
-        },
-        {
-          year: '2021',
-          title: 'Us Against the World',
-          description: 'Everything between us was perfect. But at home, my mom didn\'t approve, and it became a constant argument. Still, we stood strong.',
-          image: './images/timeline/2021.jpg'
-        },
-        {
-          year: '2022',
-          title: 'My Biggest Mistake',
-          description: 'The year started well, but I lost the plot. I gave up thinking it would be better for my parents, and with plans to go abroad, I tried moving on. I\'m so, so sorry to this day. I couldn\'t move on, and you gave me another chance—I\'m eternally grateful.',
-          image: './images/timeline/2022.jpg'
-        },
-        {
-          year: '2023',
-          title: 'Second Chances & New Beginnings',
-          description: 'You gave me another chance and we hung on. Seeing you open up at my place made me realize how much I meant to you. Past scars blinded me to the depth of your love. I was stupid, but from then on, I tried being the best version of myself. I watched you graduate with your master\'s and start working as a lecturer. I made things clear at home and took you to meet my family—it went well, I think!',
-          image: './images/timeline/2023.jpg'
-        },
-        {
-          year: 'Aug 2023',
-          title: 'Oceans Apart',
-          description: 'Small fights seemed secondary as our long distance moved from cities to countries. We stayed positive with trips, dates, and promises to call daily. I loved those notes you sent me every day for the first 19 days after I moved to the US. I still have them stored safely.',
-          image: './images/timeline/2023-aug.jpg'
-        },
-        {
-          year: '2024',
-          title: 'Struggles & Growth',
-          description: 'We talked, laughed, loved, and fought—past mistakes haunting us. My trip to India after a year felt magical. I messed up and realized my drinking was getting out of hand, so I stopped—for myself and for us. We didn\'t know when we\'d meet again, but life had one more surprise waiting.',
-          image: './images/timeline/2024.jpg'
-        },
-        {
-          year: '2025',
-          title: 'Bruno, Heartbreak & Goa',
-          description: 'The latter half of 2024 was smooth until Bruno left on Oct 28th. With him, I lost my strength and broke my promise. It\'s no excuse, but thank you for understanding. Things got back on track, and with my internship came something better—visiting India and seeing you again. I relished every moment: seeing you in that yellow top on day one, holding your hand in tears on the last. Our once-failed trip came true, and what a trip it was! I\'ve never seen Goa so beautifully—or maybe it was just the beauty of you.',
-          image: './images/timeline/2025.jpg'
-        },
-        {
-          year: 'Aug 10, 2025 - Present',
-          title: 'Here and Now',
-          description: 'This period hasn\'t been as eventful as we focus on crucial career stages. Occasional romance, occasional fights, but still hanging on. I know you\'ve been fed up with all the chances you\'ve given me, but I truly am sorry and want to be better. I pray you never stop loving me because I\'m never giving up again, no matter how hard it gets. This relationship has taught me so much, and I want it to last forever. I will always, always be there.',
-          image: './images/timeline/2025.jpg'
-        },
-      ];
-
-      useEffect(() => {
-        lucide.createIcons();
-        const puzzleTiles = Array.from({ length: 9 }, (_, i) => ({
-          id: i,
-          position: i,
-          correctPosition: i,
-        }));
-        setTiles(shuffleArray(puzzleTiles));
-      }, [activeSection]);
-
-      const shuffleArray = (array) => {
-        const newArray = [...array];
-        for (let i = newArray.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-        }
-        return newArray;
-      };
-
-      const handleTileClick = (index) => {
-        const emptyIndex = tiles.findIndex(tile => tile.id === 8);
-        
-        const emptyRow = Math.floor(emptyIndex / 3);
-        const emptyCol = emptyIndex % 3;
-        const clickedRow = Math.floor(index / 3);
-        const clickedCol = index % 3;
-        
-        const isAdjacent = 
-          (Math.abs(emptyRow - clickedRow) === 1 && emptyCol === clickedCol) ||
-          (Math.abs(emptyCol - clickedCol) === 1 && emptyRow === clickedRow);
-        
-        if (isAdjacent) {
-          const newTiles = [...tiles];
-          [newTiles[index], newTiles[emptyIndex]] = [newTiles[emptyIndex], newTiles[index]];
-          setTiles(newTiles);
-          
-          const isComplete = newTiles.every((tile, idx) => tile.correctPosition === idx);
-          setPuzzleComplete(isComplete);
-        }
-      };
-
-      const resetPuzzle = () => {
-        const puzzleTiles = Array.from({ length: 9 }, (_, i) => ({
-          id: i,
-          position: i,
-          correctPosition: i,
-        }));
-        setTiles(shuffleArray(puzzleTiles));
-        setPuzzleComplete(false);
-      };
-
-      const addGoal = () => {
-        if (newGoal.trim()) {
-          setGoals([...goals, { id: Date.now(), text: newGoal, completed: false }]);
-          setNewGoal('');
-        }
-      };
-
-      const toggleGoal = (id) => {
-        setGoals(goals.map(goal => 
-          goal.id === id ? { ...goal, completed: !goal.completed } : goal
-        ));
-      };
-
-      const deleteGoal = (id) => {
-        setGoals(goals.filter(goal => goal.id !== id));
-      };
-
-      return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-emerald-50 to-cyan-50">
-          <nav className="bg-white/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
-            <div className="max-w-6xl mx-auto px-4 py-4">
-              <div className="flex justify-between items-center">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent flex items-center gap-2">
-                  <i data-lucide="heart" className="w-6 h-6 text-blue-500 fill-blue-500"></i>
-                  Our Story
-                </h1>
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => setActiveSection('home')}
-                    className={`px-4 py-2 rounded-full transition ${
-                      activeSection === 'home' ? 'bg-gradient-to-r from-blue-500 to-emerald-500 text-white' : 'text-gray-700 hover:bg-blue-50'
-                    }`}
-                  >
-                    Home
-                  </button>
-                  <button
-                    onClick={() => setActiveSection('timeline')}
-                    className={`px-4 py-2 rounded-full transition ${
-                      activeSection === 'timeline' ? 'bg-gradient-to-r from-blue-500 to-emerald-500 text-white' : 'text-gray-700 hover:bg-blue-50'
-                    }`}
-                  >
-                    <i data-lucide="calendar" className="inline w-4 h-4 mr-1"></i>
-                    Timeline
-                  </button>
-                  <button
-                    onClick={() => setActiveSection('goals')}
-                    className={`px-4 py-2 rounded-full transition ${
-                      activeSection === 'goals' ? 'bg-gradient-to-r from-blue-500 to-emerald-500 text-white' : 'text-gray-700 hover:bg-blue-50'
-                    }`}
-                  >
-                    <i data-lucide="target" className="inline w-4 h-4 mr-1"></i>
-                    Goals
-                  </button>
-                  <button
-                    onClick={() => setActiveSection('puzzle')}
-                    className={`px-4 py-2 rounded-full transition ${
-                      activeSection === 'puzzle' ? 'bg-gradient-to-r from-blue-500 to-emerald-500 text-white' : 'text-gray-700 hover:bg-blue-50'
-                    }`}
-                  >
-                    <i data-lucide="puzzle" className="inline w-4 h-4 mr-1"></i>
-                    Puzzle
-                  </button>
-                </div>
-              </div>
-            </div>
-          </nav>
-
-          {activeSection === 'home' && (
-            <div className="max-w-4xl mx-auto px-4 py-16">
-              <div className="animate-fade-in">
-                <div className="flex justify-center mb-8">
-                  <div className="relative">
-                    <i data-lucide="heart" className="w-24 h-24 text-blue-500 fill-blue-500"></i>
-                    <i data-lucide="sparkles" className="w-8 h-8 text-emerald-500 absolute -top-2 -right-2"></i>
-                  </div>
-                </div>
-                <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mb-6">
-                  Happy Anniversary, Jaja
-                </h2>
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 max-w-3xl mx-auto space-y-6">
-                  <p className="text-2xl text-center font-semibold text-gray-800">Thirteen years.</p>
-                  <p className="text-gray-700 leading-relaxed">
-                    Somehow it feels like a lifetime, and somehow it feels like it all just began.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed">
-                    After all this time, I still find myself with nothing specific to say… and yet, everything to say. Every memory, every laugh, every quiet moment, every challenge we've faced together lives in my heart, even when words fall short.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed">
-                    Our journey hasn't been perfect—and maybe that's what makes it so real, so beautiful. Through the ups, the downs, the chaos, and the calm, you've stood by me, believed in us, and loved me in ways I don't always know how to repay. Thank you for putting up with me all these years. I'm deeply grateful for you, and I promise to keep learning, growing, and becoming better—for you, and for us.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed">
-                    I truly believe that everything is going to work out just fine, because we're in it together.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed">
-                    So this is my small gesture—a little corner of the internet made just for us. A place to preserve our story, relive our memories, and keep adding new chapters as we go. Our past, our present, and everything still waiting for us… all in one place.
-                  </p>
-                  <p className="text-center text-xl font-semibold bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mt-8">
-                    I love you. Always have. Always will. ❤️
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeSection === 'timeline' && (
-            <div className="max-w-5xl mx-auto px-4 py-16">
-              <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mb-12">
-                Our Journey Together
-              </h2>
-              <div className="space-y-12">
-                {timelineEvents.map((event, index) => (
-                  <div 
-                    key={index} 
-                    className={`flex gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                  >
-                    <div className={`w-1/2 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
-                        <p className="text-blue-600 font-bold text-lg mb-2">{event.year}</p>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-3">{event.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{event.description}</p>
-                      </div>
-                    </div>
-                    <div className="w-1/2">
-                      <div className="bg-gradient-to-br from-blue-100 to-emerald-100 rounded-xl shadow-lg overflow-hidden h-64">
-                        <img 
-                          src={event.image} 
-                          alt={event.title}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.parentElement.innerHTML = `
-                              <div class="w-full h-full flex items-center justify-center p-4">
-                                <div class="text-center">
-                                  <i data-lucide="calendar" class="w-16 h-16 mx-auto mb-2 text-blue-500"></i>
-                                  <p class="text-sm text-gray-600">Add your photo here</p>
-                                  <p class="text-xs text-gray-500 mt-1">${event.year}</p>
-                                </div>
-                              </div>
-                            `;
-                            lucide.createIcons();
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {activeSection === 'goals' && (
-            <div className="max-w-3xl mx-auto px-4 py-16">
-              <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mb-12">
-                Our Goals Together
-              </h2>
-              
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-8">
-                <div className="flex gap-2 mb-6">
-                  <input
-                    type="text"
-                    value={newGoal}
-                    onChange={(e) => setNewGoal(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && addGoal()}
-                    placeholder="Add a new goal..."
-                    className="flex-1 px-4 py-3 border-2 border-blue-200 rounded-lg focus:border-blue-500 focus:outline-none"
-                  />
-                  <button
-                    onClick={addGoal}
-                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-emerald-500 text-white rounded-lg hover:shadow-lg transition font-semibold"
-                  >
-                    Add
-                  </button>
-                </div>
-
-                <div className="space-y-3">
-                  {goals.map(goal => (
-                    <div
-                      key={goal.id}
-                      className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-emerald-50 rounded-lg hover:shadow-md transition group"
-                    >
-                      <button
-                        onClick={() => toggleGoal(goal.id)}
-                        className="flex-shrink-0"
-                      >
-                        {goal.completed ? (
-                          <i data-lucide="check-circle" className="w-6 h-6 text-emerald-500"></i>
-                        ) : (
-                          <i data-lucide="circle" className="w-6 h-6 text-gray-400"></i>
-                        )}
-                      </button>
-                      <span className={`flex-1 ${goal.completed ? 'line-through text-gray-500' : 'text-gray-800'}`}>
-                        {goal.text}
-                      </span>
-                      <button
-                        onClick={() => deleteGoal(goal.id)}
-                        className="opacity-0 group-hover:opacity-100 transition"
-                      >
-                        <i data-lucide="x" className="w-5 h-5 text-red-500"></i>
-                      </button>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-sm text-gray-700 text-center">
-                    <strong>Completed:</strong> {goals.filter(g => g.completed).length} / {goals.length} goals
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeSection === 'puzzle' && (
-            <div className="max-w-2xl mx-auto px-4 py-16">
-              <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent mb-8">
-                Solve Our Memory Puzzle
-              </h2>
-              <p className="text-center text-gray-600 mb-8">
-                Arrange the tiles to reveal a special message just for you!
-              </p>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
-                <div className="grid grid-cols-3 gap-2 max-w-md mx-auto mb-6">
-                  {tiles.map((tile, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleTileClick(index)}
-                      className={`aspect-square rounded-lg transition-all ${
-                        tile.id === 8
-                          ? 'bg-gray-200'
-                          : 'bg-gradient-to-br from-blue-400 to-emerald-500 hover:scale-105 shadow-md'
-                      }`}
-                    >
-                      {tile.id !== 8 && (
-                        <div className="w-full h-full flex items-center justify-center text-white text-2xl font-bold">
-                          {tile.id + 1}
-                        </div>
-                      )}
-                    </button>
-                  ))}
-                </div>
-
-                {puzzleComplete && (
-                  <div className="text-center animate-fade-in">
-                    <div className="mb-4 rounded-xl overflow-hidden shadow-2xl max-w-md mx-auto">
-                      <img 
-                        src="./images/puzzle-reward.jpg" 
-                        alt="Our Special Memory"
-                        className="w-full h-auto object-cover"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentElement.innerHTML = `
-                            <div class="bg-gradient-to-br from-blue-100 to-emerald-100 p-8 h-64 flex items-center justify-center">
-                              <div class="text-center">
-                                <i data-lucide="heart" class="w-20 h-20 mx-auto mb-4 text-blue-500 fill-blue-500"></i>
-                                <p class="text-gray-600">Add your special photo here!</p>
-                              </div>
-                            </div>
-                          `;
-                          lucide.createIcons();
-                        }}
-                      />
-                    </div>
-                    
-                    <div className="bg-gradient-to-r from-blue-500 to-emerald-500 text-white rounded-xl p-6">
-                      <h3 className="text-2xl font-bold mb-3">🎉 You solved it, Jaja!</h3>
-                      <p className="text-lg leading-relaxed">
-                        "Every piece of my life is better with you in it. Through every challenge, every laugh, every tear—you've been my constant. Here's to thirteen years of love, and to forever more memories together. I love you endlessly. 💕"
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                <div className="text-center mt-6">
-                  <button
-                    onClick={resetPuzzle}
-                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-emerald-500 text-white rounded-lg hover:shadow-lg transition font-semibold"
-                  >
-                    Reset Puzzle
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+  <!-- Home Section -->
+  <section id="home" class="section active">
+    <div class="container">
+      <div class="home-content">
+        <div class="heart-icon">💙</div>
+        <h1 class="main-title">Happy Anniversary, Jaja</h1>
+        <div class="card">
+          <p style="font-size: 1.5rem; font-weight: 600; text-align: center;">Thirteen years.</p>
+          <p>Somehow it feels like a lifetime, and somehow it feels like it all just began.</p>
+          <p>After all this time, I still find myself with nothing specific to say… and yet, everything to say. Every memory, every laugh, every quiet moment, every challenge we have faced together lives in my heart, even when words fall short.</p>
+          <p>Our journey has not been perfect—and maybe that is what makes it so real, so beautiful. Through the ups, the downs, the chaos, and the calm, you have stood by me, believed in us, and loved me in ways I do not always know how to repay. Thank you for putting up with me all these years. I am deeply grateful for you, and I promise to keep learning, growing, and becoming better—for you, and for us.</p>
+          <p>I truly believe that everything is going to work out just fine, because we are in it together.</p>
+          <p>So this is my small gesture—a little corner of the internet made just for us. A place to preserve our story, relive our memories, and keep adding new chapters as we go. Our past, our present, and everything still waiting for us… all in one place.</p>
+          <p style="text-align: center; font-size: 1.2rem; font-weight: 600; background: linear-gradient(to right, #2563eb, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">I love you. Always have. Always will. ❤️</p>
         </div>
-      );
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Journey Together</h2>
+      <div id="timeline-content"></div>
+    </div>
+  </section>
+
+  <!-- Goals Section -->
+  <section id="goals" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Goals Together</h2>
+      <div class="goals-container">
+        <div class="card">
+          <div class="goal-input-container">
+            <input type="text" id="goal-input" class="goal-input" placeholder="Add a new goal..." />
+            <button class="add-button" onclick="addGoal()">Add</button>
+          </div>
+          <div id="goals-list"></div>
+          <div class="goal-progress" id="goal-progress"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Puzzle Section -->
+  <section id="puzzle" class="section">
+    <div class="container">
+      <h2 class="section-title">Solve Our Memory Puzzle</h2>
+      <p class="puzzle-intro">Arrange the tiles to reveal a special message just for you!</p>
+      <div class="puzzle-container">
+        <div class="puzzle-card">
+          <div class="puzzle-grid" id="puzzle-grid"></div>
+          
+          <div class="puzzle-complete" id="puzzle-complete">
+            <img src="./images/puzzle-reward.jpg" alt="Our Special Memory" class="puzzle-reward-image" 
+                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23dbeafe%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%233b82f6%22 font-size=%2224%22%3E💙 Add puzzle-reward.jpg 💚%3C/text%3E%3C/svg%3E';" />
+            
+            <div class="puzzle-message">
+              <h3>🎉 You solved it, Jaja!</h3>
+              <p>Every piece of my life is better with you in it. Through every challenge, every laugh, every tear—you have been my constant. Here is to thirteen years of love, and to forever more memories together. I love you endlessly. 💕</p>
+            </div>
+          </div>
+
+          <button class="reset-button" onclick="resetPuzzle()">Reset Puzzle</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    var timelineData = [
+      ["2010", "When Destiny Intervened", "Fate put us in the same 6th grade class, and I met this wonderful person who would change my life forever.", "./images/timeline/2010.jpg"],
+      ["2011", "The Debate Team Days", "Laila maam started the debate group and you joined. While you had eyes for another team member, you somehow managed to catch mine too—stealing my attention away from Laila maam, one glance at a time.", "./images/timeline/2011.jpg"],
+      ["2012", "Water Park & Kolaveri", "I sat behind you on the trip to the water park and could not stop sneaking looks. You vibing to Why This Kolaveri is forever etched in my memory. By year end, I was falling for you—keeping our books together during submissions, any excuse to be close. That fracture was the best thing that happened; my last 7 minutes will have that picture of you chasing me. I let everyone else autograph my cast except you—you did not need to, you had already signed into my heart.", "./images/timeline/2012.jpg"],
+      ["2013", "Early Mornings & Growing Feelings", "Tension was building between us, especially when you sat in front of me with Dhiren by my side. I felt terrible when rows were alternated each week. We both started coming early to class—for someone who hated mornings, you became my reason to wake up 30 minutes early to groom myself. My parents were spared the trouble of pushing me out of bed.", "./images/timeline/2013-early.jpg"],
+      ["Feb 8, 2013", "The Day Everything Changed", "Last period. Rohan George spilled the secret in front of everyone. I was scared, shy, and could not face you—I thought you would not like it and ran to my van. You and Nikitha came following, but guilt consumed me. Even as I tried covering my ears, I heard you say it... I was overwhelmed, speechless. By the time I processed that you liked me too and this was not some fairytale, you were gone and the van was leaving.", "./images/timeline/2013-feb8.jpg"],
+      ["Nov 27, 2013", "Three Words", "I had assumed you knew how I felt. We spoke, looked at each other every 10 minutes, and got very busy swimming (hehe). When this genius finally realized I had not officially said those three words, I did. November 27th—the day I told you I love you.", "./images/timeline/2013-nov27.jpg"],
+      ["April 9, 2014", "Bittersweet Goodbye", "10th grade ended. You gave me a Dairy Milk as my birthday gift, and I had mixed feelings knowing I would not see you for a while. No contact. I missed you so much. I still remember how it felt without hearing from you.", "./images/timeline/2014-april.jpg"],
+      ["July 2014", "Long Distance Begins", "A tricky period—our long distance relationship officially started with you in another class. Thank God for WhatsApp keeping us connected. We shared beautiful memories like our first outing after SPARK. I remember that day like yesterday. Things got rough afterward, leaving scars, but somehow we held on.", "./images/timeline/2014-july.jpg"],
+      ["April 2015", "KFC & Better Days", "Our issues were healing. Our KFC date was genuinely fun—simple, sweet, and perfect.", "./images/timeline/2015-april.jpg"],
+      ["Oct 16, 2015", "First Cheek Kiss", "Our first cheek kiss! A milestone indeed. I can still feel it when I close my eyes. I had no complaints, but madam said I could not cheek kiss properly. Hope it is much better now! :P", "./images/timeline/2015-oct16.jpg"],
+      ["2016", "The Ooty Magic", "An amazing year. Scars were healing, and I was falling deeper for you. The Ooty trip is a highlight of my life. Sneaking away, taking pictures, sharing secret glances—it was lovely.", "./images/timeline/2016-ooty.jpg"],
+      ["Jan 1, 2016", "Creamy Inn Birthday", "Planning for months, searching for the perfect gift, all that buildup was so fun. Hope you enjoyed it despite my lame party-planning skills! The rest of the year was a dream—I was so attached.", "./images/timeline/2016-jan.jpg"],
+      ["July 7, 2016", "Cities Apart", "Long distance was not just between classes anymore—it extended to cities. I will never forget the send-off at your house. The first time I felt your tight hug, it was the best feeling I had experienced until then.", "./images/timeline/2016-july.jpg"],
+      ["Dec 16, 2016", "Our First Kiss", "We had our settling-in phase with plenty of fights, but when our lips first touched, most of it seemed to vanish. We still fought, but each one only brought us closer.", "./images/timeline/2016-dec.jpg"],
+      ["2017-2019", "The Golden Years", "This period was magical. Every visit meant endless dates—our first movie together Rangasthalam, coffee shops, parks, beaches, and that fun date at Joes house. Driving home for 2 hours to spend 1 hour with you was 200% worth it. You graduated and started your masters journey, and I am glad I was there through it all.", "./images/timeline/2017-2019.jpg"],
+      ["2020", "Growing Through Lockdown", "As the world stopped, our relationship kept growing. You were there when I was worried sick about my job offer being recalled, and there to celebrate when I got it.", "./images/timeline/2020.jpg"],
+      ["Dec 21, 2020", "No Comments Needed", "The expression on your face that day said it all. Best day ever. ❤️", "./images/timeline/2020-dec21.jpg"],
+      ["2021", "Us Against the World", "Everything between us was perfect. But at home, my mom did not approve, and it became a constant argument. Still, we stood strong.", "./images/timeline/2021.jpg"],
+      ["2022", "My Biggest Mistake", "The year started well, but I lost the plot. I gave up thinking it would be better for my parents, and with plans to go abroad, I tried moving on. I am so, so sorry to this day. I could not move on, and you gave me another chance—I am eternally grateful.", "./images/timeline/2022.jpg"],
+      ["2023", "Second Chances & New Beginnings", "You gave me another chance and we hung on. Seeing you open up at my place made me realize how much I meant to you. Past scars blinded me to the depth of your love. I was stupid, but from then on, I tried being the best version of myself. I watched you graduate with your masters and start working as a lecturer. I made things clear at home and took you to meet my family—it went well, I think!", "./images/timeline/2023.jpg"],
+      ["Aug 2023", "Oceans Apart", "Small fights seemed secondary as our long distance moved from cities to countries. We stayed positive with trips, dates, and promises to call daily. I loved those notes you sent me every day for the first 19 days after I moved to the US. I still have them stored safely.", "./images/timeline/2023-aug.jpg"],
+      ["2024", "Struggles & Growth", "We talked, laughed, loved, and fought—past mistakes haunting us. My trip to India after a year felt magical. I messed up and realized my drinking was getting out of hand, so I stopped—for myself and for us. We did not know when we would meet again, but life had one more surprise waiting.", "./images/timeline/2024.jpg"],
+      ["2025", "Bruno, Heartbreak & Goa", "The latter half of 2024 was smooth until Bruno left on Oct 28th. With him, I lost my strength and broke my promise. It is no excuse, but thank you for understanding. Things got back on track, and with my internship came something better—visiting India and seeing you again. I relished every moment: seeing you in that yellow top on day one, holding your hand in tears on the last. Our once-failed trip came true, and what a trip it was! I have never seen Goa so beautifully—or maybe it was just the beauty of you.", "./images/timeline/2025.jpg"],
+      ["Aug 10, 2025 - Present", "Here and Now", "This period has not been as eventful as we focus on crucial career stages. Occasional romance, occasional fights, but still hanging on. I know you have been fed up with all the chances you have given me, but I truly am sorry and want to be better. I pray you never stop loving me because I am never giving up again, no matter how hard it gets. This relationship has taught me so much, and I want it to last forever. I will always, always be there.", "./images/timeline/2025.jpg"]
+    ];
+
+    var goals = [
+      { id: 1, text: 'Have fewer fights and more laughter', completed: true },
+      { id: 2, text: 'Take that perfect Goa trip together', completed: true },
+      { id: 3, text: 'Clear NET exam', completed: false },
+      { id: 4, text: 'Find the perfect job', completed: false },
+      { id: 5, text: 'Convince our parents (together!)', completed: false },
+      { id: 6, text: 'Clear all loans and be debt-free', completed: false },
+      { id: 7, text: 'Have our smooth and simple shaadi', completed: false },
+      { id: 8, text: 'Go on an amazing foreign trip', completed: false },
+      { id: 9, text: 'Start our little family with babies', completed: false },
+      { id: 10, text: 'Adopt adorable pets', completed: false }
+    ];
+
+    var tiles = [];
+
+    function showSection(sectionName) {
+      var sections = document.querySelectorAll('.section');
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.remove('active');
+      }
+      document.getElementById(sectionName).classList.add('active');
+
+      var buttons = document.querySelectorAll('.nav-button');
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].classList.remove('active');
+      }
+      event.target.classList.add('active');
+
+      if (sectionName === 'timeline') renderTimeline();
+      if (sectionName === 'goals') renderGoals();
+      if (sectionName === 'puzzle') initPuzzle();
     }
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<AnniversaryWebsite />);
+    function renderTimeline() {
+      var container = document.getElementById('timeline-content');
+      var html = '';
+      for (var i = 0; i < timelineData.length; i++) {
+        var event = timelineData[i];
+        html += '<div class="timeline-item">';
+        html += '<div class="timeline-text">';
+        html += '<div class="timeline-card">';
+        html += '<div class="timeline-year">' + event[0] + '</div>';
+        html += '<div class="timeline-title">' + event[1] + '</div>';
+        html += '<div class="timeline-desc">' + event[2] + '</div>';
+        html += '</div></div>';
+        html += '<div class="timeline-image">';
+        html += '<div class="timeline-image-container">';
+        html += '<img src="' + event[3] + '" alt="' + event[1] + '" onerror="this.src=\'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23dbeafe%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%233b82f6%22 font-size=%2220%22%3E' + event[0] + '%3C/text%3E%3C/svg%3E\';" />';
+        html += '</div></div></div>';
+      }
+      container.innerHTML = html;
+    }
+
+    function renderGoals() {
+      var list = document.getElementById('goals-list');
+      var html = '';
+      for (var i = 0; i < goals.length; i++) {
+        var goal = goals[i];
+        html += '<div class="goal-item">';
+        html += '<span class="goal-checkbox" onclick="toggleGoal(' + goal.id + ')">';
+        html += goal.completed ? '✅' : '⭕';
+        html += '</span>';
+        html += '<span class="goal-text ' + (goal.completed ? 'completed' : '') + '">';
+        html += goal.text;
+        html += '</span>';
+        html += '<span class="goal-delete" onclick="deleteGoal(' + goal.id + ')">❌</span>';
+        html += '</div>';
+      }
+      list.innerHTML = html;
+
+      var completed = 0;
+      for (var j = 0; j < goals.length; j++) {
+        if (goals[j].completed) completed++;
+      }
+      document.getElementById('goal-progress').innerHTML = '<strong>Completed:</strong> ' + completed + ' / ' + goals.length + ' goals';
+    }
+
+    function addGoal() {
+      var input = document.getElementById('goal-input');
+      if (input.value.trim()) {
+        goals.push({ id: Date.now(), text: input.value, completed: false });
+        input.value = '';
+        renderGoals();
+      }
+    }
+
+    function toggleGoal(id) {
+      for (var i = 0; i < goals.length; i++) {
+        if (goals[i].id === id) {
+          goals[i].completed = !goals[i].completed;
+          break;
+        }
+      }
+      renderGoals();
+    }
+
+    function deleteGoal(id) {
+      var newGoals = [];
+      for (var i = 0; i < goals.length; i++) {
+        if (goals[i].id !== id) {
+          newGoals.push(goals[i]);
+        }
+      }
+      goals = newGoals;
+      renderGoals();
+    }
+
+    function initPuzzle() {
+      tiles = [];
+      for (var i = 0; i < 9; i++) {
+        tiles.push({ id: i, pos: i, correct: i });
+      }
+      shuffleTiles();
+      renderPuzzle();
+      document.getElementById('puzzle-complete').classList.remove('show');
+    }
+
+    function shuffleTiles() {
+      for (var i = tiles.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = tiles[i];
+        tiles[i] = tiles[j];
+        tiles[j] = temp;
+      }
+    }
+
+    function renderPuzzle() {
+      var grid = document.getElementById('puzzle-grid');
+      var html = '';
+      for (var i = 0; i < tiles.length; i++) {
+        var tile = tiles[i];
+        html += '<button class="puzzle-tile ' + (tile.id === 8 ? 'empty' : '') + '" onclick="moveTile(' + i + ')">';
+        if (tile.id !== 8) {
+          html += '<div>' + (tile.id + 1) + '</div>';
+        }
+        html += '</button>';
+      }
+      grid.innerHTML = html;
+    }
+
+    function moveTile(index) {
+      var emptyIndex = -1;
+      for (var i = 0; i < tiles.length; i++) {
+        if (tiles[i].id === 8) {
+          emptyIndex = i;
+          break;
+        }
+      }
+      
+      var emptyRow = Math.floor(emptyIndex / 3);
+      var emptyCol = emptyIndex % 3;
+      var clickedRow = Math.floor(index / 3);
+      var clickedCol = index % 3;
+
+      var isAdjacent = (Math.abs(emptyRow - clickedRow) === 1 && emptyCol === clickedCol) ||
+                       (Math.abs(emptyCol - clickedCol) === 1 && emptyRow === clickedRow);
+
+      if (isAdjacent) {
+        var temp = tiles[index];
+        tiles[index] = tiles[emptyIndex];
+        tiles[emptyIndex] = temp;
+        renderPuzzle();
+
+        var complete = true;
+        for (var j = 0; j < tiles.length; j++) {
+          if (tiles[j].correct !== j) {
+            complete = false;
+            break;
+          }
+        }
+        if (complete) {
+          document.getElementById('puzzle-complete').classList.add('show');
+        }
+      }
+    }
+
+    function resetPuzzle() {
+      initPuzzle();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('goal-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') addGoal();
+      });
+    });
   </script>
 </body>
 </html>
