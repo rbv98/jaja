@@ -44,18 +44,21 @@ html {
   background: linear-gradient(to bottom, #2563eb, #059669);
 }
 
-/* Timeline Image Containers - Better Fitting */
+/* Timeline Image Containers - Auto Crop to Fit */
 .timeline-image-container {
   background: linear-gradient(135deg, #dbeafe, #d1fae5);
   border-radius: 1rem;
   overflow: hidden;
-  aspect-ratio: 4/3;
+  width: 100%;
+  height: 350px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .timeline-image-container:hover {
-  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .timeline-image-container img {
@@ -63,6 +66,7 @@ html {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  display: block;
   transition: transform 0.3s ease;
 }
 
@@ -70,31 +74,43 @@ html {
   transform: scale(1.05);
 }
 
-/* Puzzle Reward Image - Better Display */
+/* Puzzle Reward Image - Auto Crop to Fit */
 .puzzle-reward-image {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
   border-radius: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  object-fit: contain;
-  max-height: 400px;
+  display: block;
 }
 
-/* Mobile Responsive Images */
+/* Mobile Responsive - Smaller Heights */
 @media (max-width: 768px) {
   .timeline-image-container {
-    aspect-ratio: 16/9;
+    height: 250px;
   }
   
   .puzzle-reward-image {
-    max-height: 300px;
+    height: 300px;
   }
 }
 
 /* Tablet Responsive */
 @media (max-width: 1024px) and (min-width: 769px) {
   .timeline-image-container {
-    aspect-ratio: 16/9;
+    height: 300px;
+  }
+  
+  .puzzle-reward-image {
+    height: 350px;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .timeline-image-container {
+    height: 400px;
   }
 }
