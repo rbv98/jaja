@@ -44,59 +44,46 @@ html {
   background: linear-gradient(to bottom, #2563eb, #059669);
 }
 
-/* Timeline Image Containers - Full Image Display (No Cropping) */
+/* Timeline Image Containers - Full Image Resized to Fit */
 .timeline-image-container {
   background: linear-gradient(135deg, #dbeafe, #d1fae5);
   border-radius: 1rem;
   overflow: hidden;
-  min-height: 300px;
-  max-height: 450px;
+  width: 100%;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.timeline-image-container:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
 }
 
 .timeline-image-container img {
-  width: 100%;
-  height: 100%;
-  max-height: 450px;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.timeline-image-container:hover img {
-  transform: scale(1.03);
-}
-
-/* Puzzle Reward Image - Full Image Display */
-.puzzle-reward-image {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
+  object-fit: contain;
+}
+
+/* Puzzle Reward Image - Full Image Resized to Fit */
+.puzzle-reward-image {
+  max-width: 100%;
   max-height: 500px;
+  width: auto;
+  height: auto;
   border-radius: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   object-fit: contain;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Mobile Responsive Images */
 @media (max-width: 768px) {
   .timeline-image-container {
-    min-height: 250px;
-    max-height: 350px;
-  }
-  
-  .timeline-image-container img {
-    max-height: 350px;
+    height: 300px;
   }
   
   .puzzle-reward-image {
@@ -107,15 +94,10 @@ html {
 /* Tablet Responsive */
 @media (max-width: 1024px) and (min-width: 769px) {
   .timeline-image-container {
-    min-height: 280px;
-    max-height: 400px;
-  }
-  
-  .timeline-image-container img {
-    max-height: 400px;
+    height: 350px;
   }
   
   .puzzle-reward-image {
-    max-height: 450px;
+    max-height: 400px;
   }
 }
